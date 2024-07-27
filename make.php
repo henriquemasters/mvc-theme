@@ -164,7 +164,7 @@ $viewTemplate = <<<VIEW
 
 {% block styles %}
     {{ parent() }}
-    <link href="{{ theme.link }}/mvc-theme/assets/css/page/{$slugWithoutPrefix}.min.css" rel="stylesheet">
+    <link href="{{ theme.link }}/assets/css/page/{$slugWithoutPrefix}.min.css" rel="stylesheet">
 {% endblock %}
 
 {% block content %}

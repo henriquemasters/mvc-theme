@@ -9,3 +9,7 @@
         - 26 de jul de 2024, 20:09:07: Adicionados estilos para a página refatorada.
     Usage: Importe este arquivo no template TWIG da página em questão, logo abaixo do comando {{ parent() }} do bloco "styles" para aplicar estilos.
 */
+
+h2{
+    color: rgb(228, 66, 66);
+}
