@@ -1,0 +1,29 @@
+{
+    "name": "henriquemasters/mvc-theme",
+    "description": "Gerenciador de dependências de bibliotecas necessárias para o projeto",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Henrique Mariano S. Silva",
+            "email": "henrique.masters@gmail.com",
+            "homepage": "https://github.com/henriquemasters"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "MvcTheme\\": "src/"
+        }
+    },
+    "require": {
+        "league/csv": "^9.8",
+        "nette/utils": "^3.2",
+        "google/recaptcha": "^1.2",
+        "timber/timber": "^1.22",
+        "guzzlehttp/guzzle": "^7.3"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mvc-theme",
+  "version": "1.0.0",
+  "description": "Uma abordagem moderna para estruturar um projeto WordPress, incorporando padrões de design MVC, injeção de dependências e a biblioteca Timber para renderização.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-cssnano": "^2.1.3",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "sass": "^1.69.2"
+  }
+}

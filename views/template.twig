@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="{{ header_menu.get('CurrentLang') }}">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, user-scalable=yes, shrink-to-fit=no">
+
+        <title>{{ meta.title }} &middot; {{ site.name }}</title>
+        <meta name="description" content="{{ meta.description }}">
+        <meta name="author" content="{{ site.name }}">
+        <meta name="keywords" content="">
+        <meta name="robots" content="index, follow">
+
+        <!--Facebook-->
+        <meta property="og:title" content="{{ meta.title }} &middot; {{ site.name }}" />
+        <meta property="og:description" content="{{ meta.description }}" />
+        <meta property="og:image" content="{{ meta.thumbnail }}" />
+        <meta property="og:site_name" content="{{ site.name }}" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="{{ meta.url }}" />
+
+        <!--Twitter-->
+        <meta name="twitter:title" content="{{ meta.title }} &middot; {{ site.name }}" />
+        <meta name="twitter:description" content="{{ meta.description }}" />
+        <meta name="twitter:image" content="{{ meta.thumbnail }}" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:url" content="{{ meta.url }}" />
+
+        {% block styles %}
+            <link href="{{ theme.link }}/mvc-theme/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+            <link href="{{ theme.link }}/mvc-theme/assets/fontawesome/css/all.min.css" rel="stylesheet">
+            <link href="{{ theme.link }}/mvc-theme/assets/css/theme.min.css" rel="stylesheet">
+        {% endblock %}
+    </head>
+
+    <body>
+        {% include 'commons/header.twig' %}
+        
+        {% block content %}{% endblock %}
+
+        {% include 'commons/footer.twig' %}
+        
+        {% block scripts %}
+            <script src="{{ theme.link }}/mvc-theme/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <script src="{{ theme.link }}/mvc-theme/assets/js/lib/vue.global.js"></script>
+        {% endblock %}
+    </body>
+</html>
