@@ -2,8 +2,8 @@
 
 $index_content = [
     'greetings' => [
-        'title' => 'Olá Mundo!!!',
-        'welcome' => 'Seja muito bem vindo por aqui!!!',
+        'title' => 'MVC WordPress Theme',
+        'welcome' => 'Uma base de tema WordPress com arquitetura MVC, Timber e Twig.',
     ],
 ];
 

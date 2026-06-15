@@ -1,29 +1,37 @@
-<?php
+﻿<?php
 
-// Inclui o autoloader
-try {
-    require_once __DIR__ . '/vendor/autoload.php';
-} catch (Exception $e) {
-    error_log('Erro ao incluir o autoloader: ' . $e->getMessage());
-    // Talvez redirecione para uma página de erro ou tome outra ação adequada.
+$autoload = __DIR__ . '/vendor/autoload.php';
+
+if (! file_exists($autoload)) {
+    error_log('Tema mvc-theme: vendor/autoload.php nao encontrado. Execute "composer install" em wp-content/themes/mvc-theme.');
+
+    if (is_admin()) {
+        add_action('admin_notices', function () {
+            echo '<div class="notice notice-error"><p><strong>mvc-theme:</strong> dependencias Composer nao instaladas. Execute <code>composer install</code> em <code>wp-content/themes/mvc-theme</code>.</p></div>';
+        });
+    }
+
+    return;
 }
 
-// Inclui o autoloader
+try {
+    require_once $autoload;
+} catch (Throwable $e) {
+    error_log('Tema mvc-theme: erro ao incluir o autoloader: ' . $e->getMessage());
+    return;
+}
+
 try {
     require_once __DIR__ . '/config/timber-setup.php';
-} catch (Exception $e) {
-    error_log('Erro ao incluir a configuração do Timber: ' . $e->getMessage());
-    // Talvez redirecione para uma página de erro ou tome outra ação adequada.
+} catch (Throwable $e) {
+    error_log('Tema mvc-theme: erro ao incluir a configuracao do Timber: ' . $e->getMessage());
+    return;
 }
 
 // Registra os controlador principal
 try {
-    //  $pageModel = new \MvcTheme\Models\PageModel(); // Instanciação do modelo
-    //  $pageController = new \MvcTheme\Controllers\PageController($pageModel); // Injeção da dependência
-    //
-} catch (Exception $e) {
+    // $pageModel = new \MvcTheme\Models\PageModel();
+    // $pageController = new \MvcTheme\Controllers\PageController($pageModel);
+} catch (Throwable $e) {
     error_log('Erro ao instanciar PageController: ' . $e->getMessage());
 }
-
-// ... outros códigos ...
-
