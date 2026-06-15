@@ -386,6 +386,12 @@ body {
     align-items: start;
 }
 
+.workflow-heading {
+    justify-items: end;
+    margin-left: auto;
+    text-align: right;
+}
+
 .workflow-section .section-heading h2,
 .workflow-section .section-heading p {
     color: #fff;
@@ -493,6 +499,12 @@ body {
 
     .feature-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .workflow-heading {
+        justify-items: start;
+        margin-left: 0;
+        text-align: left;
     }
 }
 

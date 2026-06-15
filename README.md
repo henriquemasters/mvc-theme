@@ -1,25 +1,25 @@
 # MVC WordPress Theme
 
-Tema WordPress experimental criado para demonstrar uma forma mais organizada de desenvolver temas customizados: WordPress como CMS, PHP orientado a camadas, Timber/Twig para views, Composer para dependencias e Sass para a camada visual.
+Tema WordPress experimental criado para demonstrar uma forma mais organizada de desenvolver temas customizados: WordPress como CMS, PHP orientado a camadas, Timber/Twig para views, Composer para dependências e Sass para a camada visual.
 
-A proposta nao e substituir o ecossistema do WordPress. E mostrar como projetos WordPress podem ganhar uma arquitetura mais previsivel quando precisam crescer alem de templates soltos e arquivos `functions.php` inchados.
+A proposta não é substituir o ecossistema do WordPress. É mostrar como projetos WordPress podem ganhar uma arquitetura mais previsível quando precisam crescer além de templates soltos e arquivos `functions.php` inchados.
 
 ## Destaques
 
 - Arquitetura inspirada em MVC, com `Controllers`, `Models` e `Views` separados.
 - Templates Twig renderizados com Timber, reduzindo PHP dentro do HTML.
 - Autoload PSR-4 via Composer para classes do tema.
-- `make.php` como CLI de scaffolding para gerar paginas mantendo a convencao MVC.
+- `make.php` como CLI de scaffolding para gerar paginas mantendo a convenção MVC.
 - Pipeline Sass com Gulp para CSS global e estilos por pagina.
-- Landing page inicial servindo como vitrine real do proprio tema.
-- Base simples para estudo, portfolio, posts tecnicos e evolucao publica no GitHub.
+- Landing page inicial servindo como vitrine real do próprio tema.
+- Base simples para estudo, portfólio, posts técnicos e evolução pública no GitHub.
 
 ## Stack
 
 - WordPress
 - PHP 7.4+
 - Composer
-- Volta para fixar a versao do Node.js
+- Volta para fixar a versão do Node.js
 - Timber 1.x
 - Twig
 - Bootstrap
@@ -65,24 +65,24 @@ O fluxo principal da home demonstra a arquitetura proposta:
 4. O contexto e enviado para `views/page/index.twig` via Timber.
 5. O Twig renderiza a interface usando layout base, assets e componentes do tema.
 
-Esse fluxo evita misturar consulta de dados, regra de apresentacao e HTML no mesmo arquivo.
+Esse fluxo evita misturar consulta de dados, regra de apresentação e HTML no mesmo arquivo.
 
 ## Instalacao
 
-Clone o repositorio dentro de `wp-content/themes`:
+Clone o repositório dentro de `wp-content/themes`:
 
 ```bash
 git clone https://github.com/henriquemasters/mvc-theme.git wp-content/themes/mvc-theme
 ```
 
-Instale as dependencias PHP:
+Instale as dependências PHP:
 
 ```bash
 cd wp-content/themes/mvc-theme
 composer install
 ```
 
-Instale as dependencias de front-end somente se for alterar os arquivos Sass. O projeto usa Volta para fixar o Node.js em `20.20.2`, conforme definido no `package.json`:
+Instale as dependências de front-end somente se for alterar os arquivos Sass. O projeto usa Volta para fixar o Node.js em `20.20.2`, conforme definido no `package.json`:
 
 ```bash
 volta install node@20.20.2
@@ -90,7 +90,7 @@ npm install
 npm run build
 ```
 
-Se voce nao usa Volta, use uma versao compativel de Node.js 20 antes de rodar `npm install`.
+Se você não usa Volta, use uma versão compatível de Node.js 20 antes de rodar `npm install`.
 
 Depois, ative o tema no painel do WordPress em `Aparencia > Temas`.
 
@@ -110,9 +110,9 @@ npm run watch
 
 ### CLI de scaffolding: `make.php`
 
-Um dos diferenciais do tema e o gerador de paginas via CLI. Ele reduz trabalho repetitivo e ajuda a manter a arquitetura consistente quando uma nova pagina precisa de controller, model, view Twig e template PHP.
+Um dos diferenciais do tema e o gerador de páginas via CLI. Ele reduz trabalho repetitivo e ajuda a manter a arquitetura consistente quando uma nova página precisa de controller, model, view Twig e template PHP.
 
-Para criar uma nova pagina:
+Para criar uma nova página:
 
 ```bash
 php make.php page-about
@@ -125,7 +125,7 @@ O comando acima gera a estrutura inicial esperada:
 - `views/page/about.twig`
 - `page-about.php`
 
-Tambem e possivel gerar partes especificas usando flags:
+Também e possível gerar partes específicas usando flags:
 
 ```bash
 php make.php page-about -c
@@ -133,7 +133,7 @@ php make.php page-about -m
 php make.php page-about -v
 ```
 
-Use o gerador sempre que possivel para preservar a convencao do projeto e evitar copiar arquivos manualmente.
+Use o gerador sempre que possível para preservar a convenção do projeto e evitar copiar arquivos manualmente.
 
 ### Pipeline front-end
 
@@ -149,7 +149,7 @@ Compila todos os arquivos SCSS uma vez.
 npm run watch
 ```
 
-Observa alteracoes em `assets/scss/**/*.scss` e recompila automaticamente.
+Observa alterações em `assets/scss/**/*.scss` e recompila automaticamente.
 
 Arquivos principais:
 
@@ -158,7 +158,7 @@ Arquivos principais:
 - Entradas por pagina: `assets/scss/page/**/*.scss`
 - Saidas por pagina: `assets/css/page/*.min.css`
 
-Nao edite diretamente os arquivos `.min.css` gerados. Altere os arquivos `.scss` e rode `npm run build`.
+Não edite diretamente os arquivos `.min.css` gerados. Altere os arquivos `.scss` e rode `npm run build`.
 
 ## Criando uma pagina manualmente
 
@@ -198,9 +198,9 @@ class AboutController extends PageController
 
 ## Seguranca do pipeline front-end
 
-O tema usa dependencias de front-end apenas em desenvolvimento, para compilar Sass em CSS minificado. O `package-lock.json` deve ser versionado para manter instalacoes reproduziveis e preservar o resultado de `npm audit`. O campo `volta` no `package.json` fixa o Node.js em `20.20.2`, reduzindo diferencas entre ambientes locais, CI e maquinas de contribuidores.
+O tema usa dependências de front-end apenas em desenvolvimento, para compilar Sass em CSS minificado. O `package-lock.json` deve ser versionado para manter instalações reproduzíveis e preservar o resultado de `npm audit`. O campo `volta` no `package.json` fixa o Node.js em `20.20.2`, reduzindo diferenças entre ambientes locais, CI e máquinas de contribuidores.
 
-Validacao atual:
+Validação atual:
 
 ```bash
 npm audit
@@ -209,22 +209,22 @@ npm audit
 
 ## Status do projeto
 
-Este repositorio e uma vitrine tecnica em evolucao. Ele serve para demonstrar organizacao de codigo, convencoes de arquitetura e uso de ferramentas modernas dentro de um tema WordPress tradicional.
+Este repositório e uma vitrine técnica em evolução. Ele serve para demonstrar organização de código, convenções de arquitetura e uso de ferramentas modernas dentro de um tema WordPress tradicional.
 
-Possiveis proximos passos:
+Possíveis próximos passos:
 
 - Adicionar testes automatizados para models e helpers.
-- Melhorar suporte a internacionalizacao nativa do WordPress.
-- Evoluir o gerador `make.php` para comandos mais seguros e validaveis.
-- Criar componentes Twig reutilizaveis para header, footer, cards e secoes.
+- Melhorar suporte a internacionalização nativa do WordPress.
+- Evoluir o gerador `make.php` para comandos mais seguros e validáveis.
+- Criar componentes Twig reutilizáveis para header, footer, cards e seções.
 - Publicar uma demo visual com screenshots atualizados.
 
-## Licenca e autoria
+## Licença e autoria
 
-Este projeto e distribuido sob a licenca GNU General Public License v3 or later.
+Este projeto e distribuído sob a licença GNU General Public License v3 or later.
 
-Voce pode usar, estudar, modificar e redistribuir este tema, inclusive em forks, desde que mantenha os avisos de copyright, a licenca original e a atribuicao ao autor original.
+Você pode usar, estudar, modificar e redistribuir este tema, inclusive em forks, desde que mantenha os avisos de copyright, a licença original e a atribuição ao autor original.
 
 Autor original: Henrique Mariano dos Santos Silva.
 
-Este software e fornecido sem garantia de funcionamento, suporte ou adequacao a qualquer finalidade especifica. Veja `LICENSE` para os termos completos.
+Este software e fornecido sem garantia de funcionamento, suporte ou adequação a qualquer finalidade específica. Veja `LICENSE` para os termos completos.
