@@ -7,61 +7,33 @@ use MvcTheme\Models\IndexModel;
 use MvcTheme\Locale\LanguageStrings;
 
 /**
- * Classe IndexController
- * 
- * Controlador específico para gerenciar a funcionalidade e renderização
- * da página "page-index.php" do WordPress.
+ * Controller for the public showcase page.
  */
 class IndexController extends PageController {
 
-   private $currLang; 
-   private $languageStrings;
+    private $currLang;
+    private $languageStrings;
+    private $indexModel;
 
-    /**
-     * Construtor da IndexController
-     * 
-     * Atualmente, chama o construtor pai, que adiciona ao contexto do Timber.
-     * Futuras customizações específicas para `IndexController` podem ser adicionadas aqui.
-     */
     public function __construct($language = 'pt') {
-        // Inicializa a classe de strings de idioma
-       $this->languageStrings = new LanguageStrings("index-{$language}");
-     
-        // Define o idioma atual do conteúdo
+        $this->languageStrings = new LanguageStrings("index-{$language}");
         $this->currLang = $language;
-     
-        parent::__construct(new IndexModel());
+        $this->indexModel = new IndexModel();
+
+        parent::__construct($this->indexModel);
     }
 
-    /**
-     * Adiciona dados customizados ao contexto do Timber.
-     *
-     * Enriquece o contexto do Timber adicionando informações específicas para a 
-     * página. Esta função sobrescreve o método da classe pai para adicionar
-     * novos dados.
-     *
-     * @param array $context O contexto existente do Timber.
-     * @param string $lang
-     * @return array O contexto enriquecido com dados adicionais.
-     */
-    public function addToContext(array $context,  string $lang = 'pt'): array {
-        $context = parent::addToContext($context, $lang); // Obtém o contexto da classe pai
-
-        // Adiciona as strings de idioma ao contexto
+    public function addToContext(array $context, string $lang = 'pt'): array {
+        $context = parent::addToContext($context, $lang);
         $context['strings'] = $this->languageStrings;
+        $context['showcase'] = $this->indexModel->getShowcase();
+        $context['repository_url'] = 'https://github.com/henriquemasters/mvc-theme';
 
         return $context;
     }
 
-    /**
-     * Renderiza a página usando Timber.
-     * 
-     * Puxa o contexto atual e renderiza a página 'page/index.twig'.
-     */
     public function render(): void {
-        $context = Timber::get_context(); // Obtém o contexto
-        
-        // Mescla o contexto com as adições da classe IndexController
+        $context = Timber::get_context();
         $context = $this->addToContext($context, $this->currLang);
 
         Timber::render('page/index.twig', $context);

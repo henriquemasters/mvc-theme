@@ -1,6 +1,4 @@
 /* SCSS Stylesheet Centralizer */
 
-@import 'base/style';
-@import 'components/header';
-
-
+@use 'base/style';
+@use 'components/header';

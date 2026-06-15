@@ -1,5 +1,4 @@
 {% extends 'template.twig' %}
-{% set greetings = strings.get('greetings') %}
 
 {% block styles %}
     {{ parent() }}
@@ -7,14 +6,135 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container custom-container">
-        <h2 class="text-center my-4 text-primary"> {{ greetings.title }} </h2>
-        <div class="row">
-            <div class="col">
-                <p> {{ greetings.welcome }} </p>
+<main class="mvc-showcase">
+    <section class="showcase-hero" id="overview">
+        <div class="showcase-shell">
+            <div class="hero-copy">
+                <span class="hero-kicker">{{ showcase.hero.eyebrow }}</span>
+                <h1>{{ showcase.hero.title }}</h1>
+                <p>{{ showcase.hero.description }}</p>
+
+                <div class="hero-actions">
+                    <a class="btn-showcase btn-showcase-primary" href="#architecture">{{ showcase.hero.primary_cta }}</a>
+                    <a class="btn-showcase btn-showcase-secondary" href="{{ repository_url }}" target="_blank" rel="noopener noreferrer">{{ showcase.hero.secondary_cta }}</a>
+                </div>
+            </div>
+
+            <aside class="architecture-card" aria-label="Fluxo da arquitetura MVC">
+                <div class="card-topline"></div>
+                <span class="card-label">Request flow</span>
+                <div class="flow-node">WordPress Template</div>
+                <div class="flow-connector"></div>
+                <div class="flow-node is-strong">Controller</div>
+                <div class="flow-connector"></div>
+                <div class="flow-grid">
+                    <span>Model</span>
+                    <span>Twig View</span>
+                </div>
+                <p>Dados preparados antes da interface. Templates focados em apresentação.</p>
+            </aside>
+        </div>
+    </section>
+
+    <section class="showcase-strip" aria-label="Destaques tecnicos">
+        <div class="showcase-shell stats-grid">
+            {% for stat in showcase.stats %}
+                <article>
+                    <strong>{{ stat.value }}</strong>
+                    <span>{{ stat.label }}</span>
+                </article>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="showcase-section" id="architecture">
+        <div class="showcase-shell">
+            <div class="section-heading">
+                <span>Por que existe</span>
+                <h2>Um ponto de partida para projetos WordPress que precisam crescer sem virar bagunça.</h2>
+            </div>
+
+            <div class="feature-grid">
+                {% for feature in showcase.features %}
+                    <article class="feature-card">
+                        <i class="{{ feature.icon }}" aria-hidden="true"></i>
+                        <h3>{{ feature.title }}</h3>
+                        <p>{{ feature.description }}</p>
+                    </article>
+                {% endfor %}
             </div>
         </div>
-    </div>
+    </section>
+
+    <section class="showcase-section workflow-section">
+        <div class="showcase-shell cli-panel">
+            <div class="section-heading compact">
+                <span>{{ showcase.cli.eyebrow }}</span>
+                <h2>{{ showcase.cli.title }}</h2>
+                <p>{{ showcase.cli.description }}</p>
+            </div>
+
+            <div class="terminal-card" aria-label="Exemplo de uso do make.php">
+                <div class="terminal-bar">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <code>{{ showcase.cli.command }}</code>
+                <ul>
+                    {% for output in showcase.cli.outputs %}
+                        <li>{{ output }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="showcase-shell workflow-layout">
+            <div class="workflow-list">
+                {% for item in showcase.workflow %}
+                    <article>
+                        <strong>{{ item.step }}</strong>
+                        <div>
+                            <h3>{{ item.title }}</h3>
+                            <p>{{ item.description }}</p>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+
+            <div class="section-heading compact workflow-heading">
+                <span>Fluxo de desenvolvimento</span>
+                <h2>Da rota WordPress ao template Twig, cada camada tem uma responsabilidade.</h2>
+                <p>Essa pagina publica também funciona como demonstração real: controller, model e Twig trabalhando juntos.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="showcase-section stack-section">
+        <div class="showcase-shell">
+            <div class="section-heading centered">
+                <span>Stack incluída</span>
+                <h2>Ferramentas conhecidas, organizadas em uma base limpa para portfólio e projetos reais.</h2>
+            </div>
+
+            <div class="stack-cloud">
+                {% for tool in showcase.stack %}
+                    <span>{{ tool }}</span>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <footer class="showcase-credit">
+        <div class="showcase-shell credit-card">
+            <span>{{ showcase.credits.label }}</span>
+            <p>{{ showcase.credits.message }}</p>
+            <a href="{{ showcase.credits.url }}" target="_blank" rel="noopener noreferrer">
+                {{ showcase.credits.author }}
+            </a>
+        </div>
+    </footer>
+</main>
 {% endblock %}
 
 {% block scripts %}
